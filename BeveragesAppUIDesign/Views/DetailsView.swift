@@ -10,15 +10,18 @@ import SwiftUI
 struct DetailsView: View {
     @Binding var showDetails: Bool
     @Binding var selectedBeverage: Beverage
+    var animation: Namespace.ID
     
     var body: some View {
         ZStack {
             selectedBeverage.backgroundColor.edgesIgnoringSafeArea(.all)
-            
+                
             VStack(alignment: .leading) {
                 HStack {
                     Button(action: {
-                        self.showDetails.toggle()
+                        withAnimation {
+                            self.showDetails.toggle()
+                        }
                     }, label: {
                         Image(systemName: "chevron.left")
                             .resizable()
@@ -45,7 +48,10 @@ struct DetailsView: View {
                     VStack {
                         HStack(alignment: .top) {
                             Image(selectedBeverage.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
                                 .offset(x: -30)
+                                .matchedGeometryEffect(id: selectedBeverage.id, in: animation)
                             
                             Spacer()
                             
@@ -150,8 +156,8 @@ struct InfoView: View {
     }
 }
 
-struct DetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailsView(showDetails: .constant(false), selectedBeverage: .constant(beverageData[1]))
-    }
-}
+//struct DetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailsView(showDetails: .constant(false), selectedBeverage: .constant(beverageData[1]))
+//    }
+//}

@@ -9,48 +9,42 @@ import SwiftUI
 
 struct CardView: View {
     var beverage: Beverage
-    @Binding var showDetails: Bool
-    @Binding var selectedBeverage: Beverage
+    var animation: Namespace.ID
     
     var body: some View {
-        Button(action: {
-            self.selectedBeverage = self.beverage
-            self.showDetails.toggle()
-        }, label: {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(beverage.title)
-                    
-                    Text("Redbull")
-                        .font(.system(size: 32, weight: .bold))
-                    
-                    Text(beverage.subtitle)
-                    
-                    Text("$\(beverage.price)")
-                        .font(.system(size: 32, weight: .bold))
-                        .padding(.top, 40)
-                }
-                .foregroundColor(.white)
+        HStack {
+            VStack(alignment: .leading) {
+                Text(beverage.title)
                 
-                Spacer()
+                Text("Redbull")
+                    .font(.system(size: 32, weight: .bold))
                 
-                Image(beverage.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 60)
+                Text(beverage.subtitle)
+                
+                Text("$\(beverage.price)")
+                    .font(.system(size: 32, weight: .bold))
+                    .padding(.top, 40)
             }
-        })
-        .frame(maxWidth: .infinity)
+            .foregroundColor(.white)
+            
+            Spacer(minLength: 0)
+            
+            Image(beverage.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .matchedGeometryEffect(id: beverage.id, in: animation)
+                .zIndex(1)
+        }
         .padding(.vertical, 40)
         .padding(.horizontal, 35)
+        .frame(height: 220)
         .background(beverage.backgroundColor)
         .cornerRadius(35, corners: [.topRight, .bottomLeft])
-        .buttonStyle(PlainButtonStyle())
     }
 }
 
-struct CardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardView(beverage: beverageData[0], showDetails: .constant(false), selectedBeverage: .constant(beverageData[0]))
-    }
-}
+//struct CardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CardView(beverage: beverageData[0])
+//    }
+//}

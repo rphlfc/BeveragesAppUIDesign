@@ -11,6 +11,7 @@ struct ListView: View {
     @State var menuSelectedItem = 0
     @Binding var showDetails: Bool
     @Binding var selectedBeverage: Beverage
+    var animation: Namespace.ID
     
     var body: some View {
         VStack {
@@ -22,7 +23,13 @@ struct ListView: View {
             ScrollView(.vertical, showsIndicators: false, content: {
                 VStack(spacing: 30) {
                     ForEach(beverageData) { beverage in
-                        CardView(beverage: beverage, showDetails: self.$showDetails, selectedBeverage: self.$selectedBeverage)
+                        CardView(beverage: beverage, animation: animation)
+                            .onTapGesture(count: 1, perform: {
+                                withAnimation {
+                                    self.selectedBeverage = beverage
+                                    self.showDetails.toggle()
+                                }
+                            })
                     }
                 }
             })
@@ -32,8 +39,8 @@ struct ListView: View {
     }
 }
 
-struct ListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListView(menuSelectedItem: 1, showDetails: .constant(false), selectedBeverage: .constant(beverageData[0]))
-    }
-}
+//struct ListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ListView(menuSelectedItem: 1, showDetails: .constant(false), selectedBeverage: .constant(beverageData[0]))
+//    }
+//}

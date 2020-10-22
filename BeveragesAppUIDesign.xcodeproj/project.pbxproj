@@ -75,11 +75,11 @@
 		64A5DA3C24F19BC7008A6ED8 /* BeveragesAppUIDesign */ = {
 			isa = PBXGroup;
 			children = (
+				64A5DA5124F19BCF008A6ED8 /* Views */,
+				64A5DA5224F19BD5008A6ED8 /* Models */,
 				64A5DA3D24F19BC7008A6ED8 /* AppDelegate.swift */,
 				64A5DA3F24F19BC7008A6ED8 /* SceneDelegate.swift */,
 				64A5DA5D24F19C09008A6ED8 /* ContentView.swift */,
-				64A5DA5124F19BCF008A6ED8 /* Views */,
-				64A5DA5224F19BD5008A6ED8 /* Models */,
 				64A5DA4324F19BC8008A6ED8 /* Assets.xcassets */,
 				64A5DA4824F19BC8008A6ED8 /* LaunchScreen.storyboard */,
 				64A5DA4B24F19BC8008A6ED8 /* Info.plist */,
@@ -340,6 +340,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BeveragesAppUIDesign/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BeveragesAppUIDesign/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -359,6 +360,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BeveragesAppUIDesign/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BeveragesAppUIDesign/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

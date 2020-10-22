@@ -10,15 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @State var showDetails = false
     @State var selectedBeverage = beverageData[0]
+    @Namespace var animation
     
     var body: some View {
         ZStack {
-            Group {
-                if showDetails {
-                    DetailsView(showDetails: self.$showDetails, selectedBeverage: self.$selectedBeverage)
-                } else {
-                    ListView(showDetails: self.$showDetails, selectedBeverage: self.$selectedBeverage)
-                }
+            ListView(showDetails: self.$showDetails, selectedBeverage: self.$selectedBeverage, animation: animation)
+            
+            if showDetails {
+                DetailsView(showDetails: self.$showDetails, selectedBeverage: self.$selectedBeverage, animation: animation)
             }
         }
     }
